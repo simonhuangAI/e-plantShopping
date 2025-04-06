@@ -10,9 +10,19 @@ function ProductList({ onHomeClick }) {
     const [addedToCart, setAddedToCart] = useState({});
     const dispatch = useDispatch();
 
+
     // Inside your ProductList component:
     const cartItems = useSelector(state => state.cart.items);
     const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+    useEffect(() => {
+        // Create a new state object based on current cart items
+        const newAddedToCart = {};
+        cartItems.forEach((item) => {
+          newAddedToCart[item.name] = true;
+        });
+        setAddedToCart(newAddedToCart);
+      }, [cartItems]);
 
     const handleAddToCart = (product) => {
         dispatch(addItem(product));
@@ -268,6 +278,7 @@ function ProductList({ onHomeClick }) {
     const handleContinueShopping = (e) => {
         e.preventDefault();
         setShowCart(false);
+
     };
     return (
         <div>
