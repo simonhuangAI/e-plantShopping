@@ -111,6 +111,13 @@ body {
     background-color: #c0392b;
 }
 
+.product-button:disabled {
+  background-color: gray;  /* Changes the button's background to gray */
+  cursor: not-allowed;     /* Changes the cursor to indicate it can't be clicked */
+  opacity: 0.7;            /* Optional: Adjusts opacity to further indicate a disabled state */
+}
+
+
 /* Pseudo-elements - Sale badge */
 .product-card::before {
     content: "SALE";
@@ -164,6 +171,19 @@ body {
     color: white;
     display: flex;
 }
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+
 .cart_quantity_count{
     margin-top: 16px;
     /* background-color: red; */
